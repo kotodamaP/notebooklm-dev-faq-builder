@@ -1,9 +1,9 @@
 ---
-name: making-reference-for-notebooklm
-description: Use this skill when the user wants to inspect a local software project and create NotebookLM-ready reference material plus a developer-facing FAQ metaprompt. It should analyze local docs, git status, configuration shape, tests, scripts, and source structure, while separating confirmed facts from assumptions and excluding secrets.
+name: notebooklm-dev-faq-builder
+description: Use this skill when the user wants to inspect a local software project and create NotebookLM-ready developer FAQ source material plus a developer-facing FAQ metaprompt. It should analyze local docs, git status, configuration shape, tests, scripts, and source structure, while separating confirmed facts from assumptions and excluding secrets.
 ---
 
-# Making Reference for NoteBookLM
+# NotebookLM Dev FAQ Builder
 
 Use this skill to create reference material that lets developers ask NotebookLM high-quality specification questions about a local software project.
 
@@ -136,4 +136,3 @@ Stop and ask the user before:
 - overwriting existing NotebookLM output files when manual notes cannot be safely preserved
 - fetching remote repositories or online sources
 - uploading anything to NotebookLM or another external service
-

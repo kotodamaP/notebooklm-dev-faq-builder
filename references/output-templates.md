@@ -1,6 +1,6 @@
 # Output Templates
 
-Use these templates when `$making-reference-for-notebooklm` creates NotebookLM-ready project FAQ material.
+Use these templates when `$notebooklm-dev-faq-builder` creates NotebookLM-ready project FAQ material.
 
 The standard output directory is:
 
@@ -37,7 +37,7 @@ notebooklm-developer-faq-metaprompt.md
   - deleted:
   - untracked:
 - Recent commits:
-- Skill: making-reference-for-notebooklm
+- Skill: notebooklm-dev-faq-builder
 - Notes:
   - This document is generated from the latest local project state available at generation time.
   - Confirmed facts, assumptions, contradictions, risks, and open questions are separated.
@@ -181,4 +181,3 @@ The target reader is not a beginner. They are a developer who wants to confirm u
 - Do not hide contradictions between sources.
 - Do not oversimplify for beginners when developer-level detail is needed.
 ```
-

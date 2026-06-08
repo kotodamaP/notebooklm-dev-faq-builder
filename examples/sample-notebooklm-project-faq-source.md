@@ -18,7 +18,7 @@
   - untracked: none
 - Recent commits:
   - `abc1234 docs: update usage guide`
-- Skill: making-reference-for-notebooklm
+- Skill: notebooklm-dev-faq-builder
 - Notes:
   - This sample is synthetic and contains no private project data.
   - Confirmed facts, assumptions, contradictions, risks, and open questions are separated.
@@ -94,4 +94,3 @@ The repository is clean on `main` at `abc1234`. No local changes were detected.
 | `src/cli.ts` | implementation entry point | read |
 | `tests/cli.test.ts` | expected behavior | read |
 | `.env.example` | safe config names | summarized |
-

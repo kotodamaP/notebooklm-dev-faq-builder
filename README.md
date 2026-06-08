@@ -4,7 +4,7 @@ Turn any local software project into NotebookLM-ready developer FAQ material.
 
 `NotebookLM Dev FAQ Builder` is a public Codex Skill repository for generating source-backed project reference material and a developer-facing NotebookLM metaprompt. It is designed for developers who want to ask precise questions about specifications, implementation details, maintenance context, contradictions, and open issues after importing the generated files into NotebookLM.
 
-> Current skill invocation name: `$making-reference-for-notebooklm`
+> Current skill invocation name: `$notebooklm-dev-faq-builder`
 
 ## Languages
 
@@ -31,13 +31,13 @@ The goal is simple: make a project immediately question-answerable in NotebookLM
 2. Confirm the skill is recognized as:
 
    ```text
-   $making-reference-for-notebooklm
+   $notebooklm-dev-faq-builder
    ```
 
 3. Run it in a local project:
 
    ```text
-   Use $making-reference-for-notebooklm to inspect this project and create NotebookLM FAQ source material and a developer FAQ metaprompt.
+   Use $notebooklm-dev-faq-builder to inspect this project and create NotebookLM FAQ source material and a developer FAQ metaprompt.
    ```
 
 4. Check the generated files:
@@ -98,7 +98,7 @@ Copy this repository folder into a Codex skill root, or install it as a user ski
 The current skill invocation name is:
 
 ```text
-$making-reference-for-notebooklm
+$notebooklm-dev-faq-builder
 ```
 
 ### Usage
@@ -106,7 +106,7 @@ $making-reference-for-notebooklm
 Example prompt:
 
 ```text
-Use $making-reference-for-notebooklm to inspect this project and create NotebookLM FAQ source material and a developer FAQ metaprompt.
+Use $notebooklm-dev-faq-builder to inspect this project and create NotebookLM FAQ source material and a developer FAQ metaprompt.
 ```
 
 By default, generated files should be placed under:
@@ -147,13 +147,13 @@ They show the intended output shape without exposing private project data.
 2. Skillが次の名前で認識されることを確認します。
 
    ```text
-   $making-reference-for-notebooklm
+   $notebooklm-dev-faq-builder
    ```
 
 3. ローカルプロジェクトで実行します。
 
    ```text
-   Use $making-reference-for-notebooklm to inspect this project and create NotebookLM FAQ source material and a developer FAQ metaprompt.
+   Use $notebooklm-dev-faq-builder to inspect this project and create NotebookLM FAQ source material and a developer FAQ metaprompt.
    ```
 
 4. 生成されたファイルを確認します。
@@ -214,7 +214,7 @@ After:
 現在のSkill呼び出し名は次の通りです。
 
 ```text
-$making-reference-for-notebooklm
+$notebooklm-dev-faq-builder
 ```
 
 ### 使い方
@@ -222,7 +222,7 @@ $making-reference-for-notebooklm
 プロンプト例:
 
 ```text
-Use $making-reference-for-notebooklm to inspect this project and create NotebookLM FAQ source material and a developer FAQ metaprompt.
+Use $notebooklm-dev-faq-builder to inspect this project and create NotebookLM FAQ source material and a developer FAQ metaprompt.
 ```
 
 標準では、生成物は次の場所に置く想定です。
@@ -263,13 +263,13 @@ examples/sample-notebooklm-developer-faq-metaprompt.md
 2. 確認 Skill 可以用以下名稱呼叫：
 
    ```text
-   $making-reference-for-notebooklm
+   $notebooklm-dev-faq-builder
    ```
 
 3. 在本機專案中執行：
 
    ```text
-   Use $making-reference-for-notebooklm to inspect this project and create NotebookLM FAQ source material and a developer FAQ metaprompt.
+   Use $notebooklm-dev-faq-builder to inspect this project and create NotebookLM FAQ source material and a developer FAQ metaprompt.
    ```
 
 4. 檢查產生的檔案：
@@ -330,7 +330,7 @@ After:
 目前的 Skill 呼叫名稱如下：
 
 ```text
-$making-reference-for-notebooklm
+$notebooklm-dev-faq-builder
 ```
 
 ### 使用方式
@@ -338,7 +338,7 @@ $making-reference-for-notebooklm
 範例 prompt：
 
 ```text
-Use $making-reference-for-notebooklm to inspect this project and create NotebookLM FAQ source material and a developer FAQ metaprompt.
+Use $notebooklm-dev-faq-builder to inspect this project and create NotebookLM FAQ source material and a developer FAQ metaprompt.
 ```
 
 預設輸出位置：
@@ -366,6 +366,7 @@ examples/sample-notebooklm-developer-faq-metaprompt.md
 README.md
 SKILL.md
 agents/openai.yaml
+assets/favicon.svg
 references/output-templates.md
 examples/sample-notebooklm-project-faq-source.md
 examples/sample-notebooklm-developer-faq-metaprompt.md
@@ -376,4 +377,3 @@ LICENSE
 ## License
 
 MIT
-

@@ -1,5 +1,7 @@
 interface:
-  display_name: "Making Reference for NoteBookLM"
+  display_name: "NotebookLM Dev FAQ Builder"
   short_description: "Build developer FAQ docs for NotebookLM."
-  default_prompt: "Use $making-reference-for-notebooklm to inspect this project and create NotebookLM FAQ source material and a developer FAQ metaprompt."
-
+  icon_small: "./assets/favicon.svg"
+  icon_large: "./assets/favicon.svg"
+  brand_color: "#2563EB"
+  default_prompt: "Use $notebooklm-dev-faq-builder to inspect this project and create NotebookLM FAQ source material and a developer FAQ metaprompt."
