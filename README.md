@@ -1,8 +1,10 @@
-# Making Reference for NoteBookLM
+# NotebookLM Dev FAQ Builder
 
-`Making Reference for NoteBookLM` is a Codex Skill for turning a local software project into NotebookLM-ready reference material.
+Turn any local software project into NotebookLM-ready developer FAQ material.
 
-It helps developers create source-backed project documentation and a NotebookLM metaprompt so they can ask specification, maintenance, and implementation questions immediately after importing the generated files into NotebookLM.
+`NotebookLM Dev FAQ Builder` is a public Codex Skill repository for generating source-backed project reference material and a developer-facing NotebookLM metaprompt. It is designed for developers who want to ask precise questions about specifications, implementation details, maintenance context, contradictions, and open issues after importing the generated files into NotebookLM.
+
+> Current skill invocation name: `$making-reference-for-notebooklm`
 
 ## Languages
 
@@ -21,11 +23,50 @@ This repository provides a Codex Skill that inspects the latest local state of a
 - `notebooklm-project-faq-source.md`: source-backed project specification and FAQ reference material
 - `notebooklm-developer-faq-metaprompt.md`: a developer-facing metaprompt for asking NotebookLM precise project questions
 
-The skill is designed for developers who want to review unclear behavior, implementation details, maintenance context, and project decisions without manually rebuilding the project context every time.
+The goal is simple: make a project immediately question-answerable in NotebookLM without manually rebuilding context from scattered README files, docs, scripts, tests, and local Git state.
+
+### Quick Start
+
+1. Clone or copy this repository into a Codex skill directory.
+2. Confirm the skill is recognized as:
+
+   ```text
+   $making-reference-for-notebooklm
+   ```
+
+3. Run it in a local project:
+
+   ```text
+   Use $making-reference-for-notebooklm to inspect this project and create NotebookLM FAQ source material and a developer FAQ metaprompt.
+   ```
+
+4. Check the generated files:
+
+   ```text
+   docs/notebooklm/notebooklm-project-faq-source.md
+   docs/notebooklm/notebooklm-developer-faq-metaprompt.md
+   ```
+
+5. Import the generated source document and metaprompt into NotebookLM, then ask developer-facing specification questions.
+
+### Before / After
+
+Before:
+
+- README, docs, scripts, tests, and local Git state are scattered.
+- NotebookLM answers may be vague because the source context is incomplete.
+- Contradictions and assumptions are easy to miss.
+
+After:
+
+- A source-backed project FAQ source document is generated.
+- A developer metaprompt tells NotebookLM how to answer precisely.
+- Confirmed facts, assumptions, contradictions, risks, and open questions are separated.
+- Generation metadata and source index make the snapshot easier to audit.
 
 ### What It Does
 
-- Reads local project docs, git state, configuration shape, scripts, tests, and source entry points.
+- Reads local project docs, Git state, configuration shape, scripts, tests, and source entry points.
 - Separates confirmed facts, assumptions, contradictions, risks, and open questions.
 - Produces NotebookLM-friendly Markdown with generation metadata and a source index.
 - Helps NotebookLM answer with evidence, not vague summaries.
@@ -38,11 +79,23 @@ The skill is designed for developers who want to review unclear behavior, implem
 - It does not inspect GitHub issues, pull requests, or external services by default.
 - It does not read or copy raw secret-bearing files.
 
+### Safety Guarantees
+
+By default, this skill:
+
+- does not upload files to NotebookLM
+- does not call external services
+- does not fetch GitHub issues or pull requests
+- does not read raw `.env` or credential files
+- handles `.env.example`, `.env.sample`, and `.env.template` as names/comments only
+- redacts user-specific paths when output may be shared
+- stops before overwriting existing NotebookLM output files when manual notes cannot be preserved
+
 ### Installation
 
 Copy this repository folder into a Codex skill root, or install it as a user skill using your Codex environment's supported skill path.
 
-The skill invocation name is:
+The current skill invocation name is:
 
 ```text
 $making-reference-for-notebooklm
@@ -62,14 +115,16 @@ By default, generated files should be placed under:
 <project-root>/docs/notebooklm/
 ```
 
-### Safety Model
+### Examples
 
-This skill is intentionally local-state-first and conservative:
+Example outputs are available under:
 
-- `.env`, `.env.local`, `.env.production`, private keys, tokens, and credential files should not be read or copied.
-- `.env.example`, `.env.sample`, and `.env.template` may be inspected only for variable names and human-readable comments.
-- Major claims should be backed by source paths, command summaries, explicit assumptions, or open questions.
-- Existing output files should not be silently overwritten.
+```text
+examples/sample-notebooklm-project-faq-source.md
+examples/sample-notebooklm-developer-faq-metaprompt.md
+```
+
+They show the intended output shape without exposing private project data.
 
 ---
 
@@ -77,14 +132,53 @@ This skill is intentionally local-state-first and conservative:
 
 ### 概要
 
-`Making Reference for NoteBookLM` は、ローカルのソフトウェアプロジェクトを調査し、NotebookLM に投入しやすい参照元資料を作成するための Codex Skill です。
+`NotebookLM Dev FAQ Builder` は、ローカル開発プロジェクトを NotebookLM で仕様確認しやすい、根拠付きFAQ資料へ変換するための Codex Skill リポジトリです。
 
 このSkillは、プロジェクトの最新ローカル状態をもとに、次の2つのMarkdownファイルを作成することを目的にしています。
 
 - `notebooklm-project-faq-source.md`: 根拠付きの仕様説明・FAQ参照資料
 - `notebooklm-developer-faq-metaprompt.md`: NotebookLMに開発者向けの仕様確認Q&Aをさせるためのメタプロンプト
 
-対象読者は初心者ではなく、実装・保守・レビュー・振り返りのために、プロジェクト仕様や未確認点をすぐ確認したい開発者です。
+目的は、README、docs、scripts、tests、Git状態に散らばった情報を整理し、NotebookLMでプロジェクト仕様をすぐ質疑応答できる状態にすることです。
+
+### Quick Start
+
+1. このリポジトリをCodexのSkill directoryへcloneまたはcopyします。
+2. Skillが次の名前で認識されることを確認します。
+
+   ```text
+   $making-reference-for-notebooklm
+   ```
+
+3. ローカルプロジェクトで実行します。
+
+   ```text
+   Use $making-reference-for-notebooklm to inspect this project and create NotebookLM FAQ source material and a developer FAQ metaprompt.
+   ```
+
+4. 生成されたファイルを確認します。
+
+   ```text
+   docs/notebooklm/notebooklm-project-faq-source.md
+   docs/notebooklm/notebooklm-developer-faq-metaprompt.md
+   ```
+
+5. 生成された資料とメタプロンプトをNotebookLMへ入れ、開発者向けの仕様確認質問を行います。
+
+### Before / After
+
+Before:
+
+- README、docs、scripts、tests、Git状態が散らばっている。
+- NotebookLMに入れる参照元が弱く、回答が曖昧になりやすい。
+- 矛盾、推測、未確認事項が見落とされやすい。
+
+After:
+
+- 根拠付きのプロジェクトFAQ参照資料が生成される。
+- 開発者向けメタプロンプトにより、NotebookLMが精密に回答しやすくなる。
+- 確認済み事実、推測、矛盾、リスク、未確認事項が分離される。
+- 生成メタ情報とSource Indexにより、いつ・何を根拠にした資料か追跡しやすくなる。
 
 ### できること
 
@@ -101,11 +195,23 @@ This skill is intentionally local-state-first and conservative:
 - GitHub Issue、Pull Request、外部サービスは標準では調査しません。
 - secretを含む可能性のあるファイルの実値を読んだり転記したりしません。
 
+### Safety Guarantees
+
+標準では、このSkillは次のことを行いません。
+
+- NotebookLMへファイルをアップロードしない
+- 外部サービスを呼び出さない
+- GitHub IssueやPull Requestを取得しない
+- raw `.env` やcredential fileを読まない
+- `.env.example`、`.env.sample`、`.env.template` は変数名とコメントだけ扱う
+- 共有される可能性のある出力ではユーザー固有パスを伏せる
+- 手動メモを安全に保持できない場合、既存NotebookLM出力を無言で上書きしない
+
 ### インストール
 
 このリポジトリのフォルダを、利用中のCodex環境が認識するSkill rootへ配置してください。
 
-Skillの呼び出し名は次の通りです。
+現在のSkill呼び出し名は次の通りです。
 
 ```text
 $making-reference-for-notebooklm
@@ -125,14 +231,16 @@ Use $making-reference-for-notebooklm to inspect this project and create Notebook
 <project-root>/docs/notebooklm/
 ```
 
-### 安全設計
+### Examples
 
-このSkillは、ローカル状態を優先しつつ、慎重に資料化する設計です。
+出力例は次の場所にあります。
 
-- `.env`、`.env.local`、`.env.production`、秘密鍵、token、credential fileは読んだり転記したりしません。
-- `.env.example`、`.env.sample`、`.env.template` は、変数名と人間向けコメントだけを扱います。
-- 主要な主張には、ファイルパス、コマンド結果の要約、明示した推測、または未確認事項を添えます。
-- 既存のNotebookLM出力ファイルは、無言で上書きしません。
+```text
+examples/sample-notebooklm-project-faq-source.md
+examples/sample-notebooklm-developer-faq-metaprompt.md
+```
+
+公開用の安全なサンプルとして、出力の形を確認できます。
 
 ---
 
@@ -140,14 +248,53 @@ Use $making-reference-for-notebooklm to inspect this project and create Notebook
 
 ### 概覽
 
-`Making Reference for NoteBookLM` 是一個 Codex Skill，用來檢查本機軟體專案，並產生適合匯入 NotebookLM 的參考資料。
+`NotebookLM Dev FAQ Builder` 是一個 Codex Skill repository，用來把本機開發專案整理成適合 NotebookLM 使用的、有來源依據的開發者 FAQ 參考資料。
 
 這個 Skill 會根據專案目前的本機狀態，準備兩個 Markdown 檔案：
 
 - `notebooklm-project-faq-source.md`：有來源依據的專案規格與 FAQ 參考資料
 - `notebooklm-developer-faq-metaprompt.md`：讓 NotebookLM 以開發者角度回答規格問題的 metaprompt
 
-它適合需要回顧規格、確認實作細節、維護脈絡與專案決策的開發者，而不是只需要入門說明的讀者。
+目標是把分散在 README、docs、scripts、tests 與 Git 狀態中的資訊整理好，讓 NotebookLM 可以立即回答開發者的規格確認問題。
+
+### Quick Start
+
+1. 將此 repository clone 或 copy 到 Codex 的 Skill directory。
+2. 確認 Skill 可以用以下名稱呼叫：
+
+   ```text
+   $making-reference-for-notebooklm
+   ```
+
+3. 在本機專案中執行：
+
+   ```text
+   Use $making-reference-for-notebooklm to inspect this project and create NotebookLM FAQ source material and a developer FAQ metaprompt.
+   ```
+
+4. 檢查產生的檔案：
+
+   ```text
+   docs/notebooklm/notebooklm-project-faq-source.md
+   docs/notebooklm/notebooklm-developer-faq-metaprompt.md
+   ```
+
+5. 將產生的資料與 metaprompt 匯入 NotebookLM，開始詢問開發者導向的規格問題。
+
+### Before / After
+
+Before:
+
+- README、docs、scripts、tests 與 Git 狀態分散在不同地方。
+- NotebookLM 的來源脈絡不足，回答容易變得模糊。
+- 矛盾、推論與待確認問題容易被忽略。
+
+After:
+
+- 產生有來源依據的 project FAQ source。
+- developer metaprompt 會指示 NotebookLM 精準回答。
+- 已確認事實、推論、矛盾、風險與待確認問題會被分開整理。
+- generation metadata 與 Source Index 讓資料快照更容易稽核。
 
 ### 可以做什麼
 
@@ -164,11 +311,23 @@ Use $making-reference-for-notebooklm to inspect this project and create Notebook
 - 預設不會檢查 GitHub Issues、Pull Requests 或外部服務。
 - 不會讀取或複製可能含有 secret 的原始檔案內容。
 
+### Safety Guarantees
+
+預設情況下，這個 Skill：
+
+- 不會上傳檔案到 NotebookLM
+- 不會呼叫外部服務
+- 不會抓取 GitHub Issues 或 Pull Requests
+- 不會讀取 raw `.env` 或 credential files
+- 只會從 `.env.example`、`.env.sample`、`.env.template` 取得變數名稱與註解
+- 在可能分享的輸出中會遮蔽使用者專屬路徑
+- 如果無法安全保留手動註記，不會默默覆寫既有 NotebookLM 輸出檔
+
 ### 安裝
 
 請將此 repository 資料夾放到你的 Codex 環境支援的 Skill root 中。
 
-Skill 呼叫名稱如下：
+目前的 Skill 呼叫名稱如下：
 
 ```text
 $making-reference-for-notebooklm
@@ -188,23 +347,30 @@ Use $making-reference-for-notebooklm to inspect this project and create Notebook
 <project-root>/docs/notebooklm/
 ```
 
-### 安全設計
+### Examples
 
-這個 Skill 採取本機狀態優先且保守的資料處理方式：
+輸出範例位於：
 
-- 不應讀取或複製 `.env`、`.env.local`、`.env.production`、private keys、tokens 或 credential files。
-- `.env.example`、`.env.sample`、`.env.template` 只可用來擷取變數名稱與給人閱讀的註解。
-- 主要結論應附上來源路徑、命令結果摘要、明確標示的推論，或待確認問題。
-- 不應在未確認的情況下覆寫既有 NotebookLM 輸出檔案。
+```text
+examples/sample-notebooklm-project-faq-source.md
+examples/sample-notebooklm-developer-faq-metaprompt.md
+```
+
+這些範例展示了輸出格式，但不包含私人專案資料。
 
 ---
 
 ## Repository Contents
 
 ```text
+README.md
 SKILL.md
 agents/openai.yaml
 references/output-templates.md
+examples/sample-notebooklm-project-faq-source.md
+examples/sample-notebooklm-developer-faq-metaprompt.md
+.gitignore
+LICENSE
 ```
 
 ## License
