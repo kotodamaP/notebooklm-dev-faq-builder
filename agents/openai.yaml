@@ -1,0 +1,5 @@
+interface:
+  display_name: "Making Reference for NoteBookLM"
+  short_description: "Build developer FAQ docs for NotebookLM."
+  default_prompt: "Use $making-reference-for-notebooklm to inspect this project and create NotebookLM FAQ source material and a developer FAQ metaprompt."
+
